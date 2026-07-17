@@ -1,0 +1,9 @@
+groq
+chromadb
+sentence-transformers
+flashrank
+pymupdf
+python-dotenv
+typer
+numpy
+scikit-learn

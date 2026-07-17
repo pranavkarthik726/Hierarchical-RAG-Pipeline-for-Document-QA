@@ -1,0 +1,226 @@
+[
+  {
+    "question": "What was Acme Corp's total revenue in Q3 2025?",
+    "ground_truth_answer": "Acme Corp's total revenue in Q3 2025 was $42.3 million, an 18% increase year-over-year.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [1],
+    "answerable": true
+  },
+  {
+    "question": "What was Acme Corp's net profit in Q3 2025?",
+    "ground_truth_answer": "Net profit in Q3 2025 was $6.1 million, up from $4.4 million in Q3 2024.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [1],
+    "answerable": true
+  },
+  {
+    "question": "Who is the CEO of Acme Corp?",
+    "ground_truth_answer": "Maria Solano is the CEO of Acme Corp.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [1],
+    "answerable": true
+  },
+  {
+    "question": "How much Q3 2025 revenue came from the Hardware segment?",
+    "ground_truth_answer": "$18.2 million, which was 43% of total revenue.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [2],
+    "answerable": true
+  },
+  {
+    "question": "Which Acme business segment grew the fastest year-over-year in Q3 2025?",
+    "ground_truth_answer": "The Software segment grew the fastest, up 31% year-over-year.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [2],
+    "answerable": true
+  },
+  {
+    "question": "How much Q3 2025 revenue came from Europe?",
+    "ground_truth_answer": "$11.0 million.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [3],
+    "answerable": true
+  },
+  {
+    "question": "What percentage of Acme Corp's total Q3 2025 revenue came from North America?",
+    "ground_truth_answer": "59% of total revenue.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [3],
+    "answerable": true
+  },
+  {
+    "question": "How many employees did Acme Corp have at the end of Q3 2025?",
+    "ground_truth_answer": "1,240 employees, up from 1,065 a year earlier.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [4],
+    "answerable": true
+  },
+  {
+    "question": "In which city did Acme Corp open a new office in August 2025?",
+    "ground_truth_answer": "Austin, Texas.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [4],
+    "answerable": true
+  },
+  {
+    "question": "Where is Acme Corp headquartered?",
+    "ground_truth_answer": "Seattle, Washington.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["6811c2a00ba265a5"],
+    "relevant_pages": [4],
+    "answerable": true
+  },
+  {
+    "question": "How much did Acme Corp spend on R&D in Q3 2025?",
+    "ground_truth_answer": "$4.8 million, representing 11.3% of total revenue.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["775a88275a86736f"],
+    "relevant_pages": [5],
+    "answerable": true
+  },
+  {
+    "question": "What did Acme Corp identify as the primary risk to Hardware segment margins heading into Q4 2025?",
+    "ground_truth_answer": "Supply chain disruption, specifically volatility in semiconductor component pricing.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["775a88275a86736f"],
+    "relevant_pages": [6],
+    "answerable": true
+  },
+  {
+    "question": "What is Acme Corp's revenue guidance for Q4 2025?",
+    "ground_truth_answer": "$45 million to $47 million.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["775a88275a86736f"],
+    "relevant_pages": [6],
+    "answerable": true
+  },
+  {
+    "question": "Who is Acme Corp's Chief Financial Officer?",
+    "ground_truth_answer": "Tom Reyes.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["775a88275a86736f"],
+    "relevant_pages": [7],
+    "answerable": true
+  },
+  {
+    "question": "Who is Acme Corp's independent auditor?",
+    "ground_truth_answer": "Meridian & Blake LLP.",
+    "doc_name": "acme_q3_2025_report.pdf",
+    "relevant_parent_ids": ["775a88275a86736f"],
+    "relevant_pages": [7],
+    "answerable": true
+  },
+  {
+    "question": "What is the Nimbus AI Suite?",
+    "ground_truth_answer": "A document-automation platform developed by Acme Corp's Software division, combining hierarchical retrieval-augmented generation with workflow automation.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["a7b34f4ea7d003fe"],
+    "relevant_pages": [1],
+    "answerable": true
+  },
+  {
+    "question": "How much RAM does the Nimbus AI Suite desktop client require at minimum?",
+    "ground_truth_answer": "8 GB RAM minimum (16 GB recommended).",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["a7b34f4ea7d003fe"],
+    "relevant_pages": [2],
+    "answerable": true
+  },
+  {
+    "question": "What Python version does the Nimbus AI Suite command-line integration require?",
+    "ground_truth_answer": "Python 3.9 or later.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["a7b34f4ea7d003fe"],
+    "relevant_pages": [2],
+    "answerable": true
+  },
+  {
+    "question": "How much does the Nimbus AI Suite Pro tier cost per month?",
+    "ground_truth_answer": "$99 per user per month, for up to 10,000 documents.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["a7b34f4ea7d003fe"],
+    "relevant_pages": [3],
+    "answerable": true
+  },
+  {
+    "question": "What discount is available for annual billing on the Nimbus AI Suite Pro and Enterprise tiers?",
+    "ground_truth_answer": "A 15% discount.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["a7b34f4ea7d003fe"],
+    "relevant_pages": [3],
+    "answerable": true
+  },
+  {
+    "question": "What is the Nimbus AI Suite support email address?",
+    "ground_truth_answer": "support@nimbusai.example.com.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["94adc949a8c56b24"],
+    "relevant_pages": [5],
+    "answerable": true
+  },
+  {
+    "question": "What is the SLA response time for Nimbus AI Suite Enterprise support?",
+    "ground_truth_answer": "24-hour response time, with a dedicated account manager.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["94adc949a8c56b24"],
+    "relevant_pages": [5],
+    "answerable": true
+  },
+  {
+    "question": "What new features did Nimbus AI Suite version 2.1 add?",
+    "ground_truth_answer": "A dark mode theme and improved PDF table extraction accuracy.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["94adc949a8c56b24"],
+    "relevant_pages": [6],
+    "answerable": true
+  },
+  {
+    "question": "Which version of the Nimbus AI Suite was the release referenced in Acme's Q3 2025 financial report as the quarter's flagship product launch?",
+    "ground_truth_answer": "Version 2.0, released in July 2025, which added native integration with the Groq inference API.",
+    "doc_name": "nimbus_ai_handbook.pdf",
+    "relevant_parent_ids": ["94adc949a8c56b24", "775a88275a86736f"],
+    "relevant_pages": [6],
+    "answerable": true
+  },
+  {
+    "question": "What is Acme Corp's stock ticker symbol?",
+    "ground_truth_answer": "The provided documents do not contain Acme Corp's stock ticker symbol.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "Who is the Chief Technology Officer of Acme Corp?",
+    "ground_truth_answer": "The provided documents do not name a Chief Technology Officer for Acme Corp.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "What was Acme Corp's total revenue in Q1 2024?",
+    "ground_truth_answer": "The provided documents do not contain Acme Corp's Q1 2024 revenue figure.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "Does the Nimbus AI Suite offer a free trial?",
+    "ground_truth_answer": "The provided documents do not mention a free trial for the Nimbus AI Suite.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  }
+]
