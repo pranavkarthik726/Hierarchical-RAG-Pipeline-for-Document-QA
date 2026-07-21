@@ -1,14 +1,22 @@
-"""Generation-quality evaluation: a single free Groq LLM-as-judge call per
-answer (faithfulness / correctness / relevance), plus a deterministic,
-model-free refusal check.
+"""Generation-quality evaluation helpers.
 
-Deviation D8: the spec bans a "paid" LLM judge and otherwise wants
-generation metrics from BAAI/bge-small-en-v1.5 cosine similarity alone.
-Cosine can't distinguish a faithful paraphrase from an on-topic
-hallucination, and it *penalizes correct refusals* (a refusal is
-textually dissimilar from the question it refuses). Since Groq is already
-a required, free dependency, using it as a judge is strictly more
-defensible at zero extra cost -- see README.md "Deviations from spec".
+Two judge implementations are available:
+  - judge_answer()        -- original Groq LLM-as-judge (used by run_eval.py)
+  - gemini_judge_answer() -- Gemini LLM-as-judge (used by run_apple_eval.py)
+
+Both score faithfulness / correctness / relevance on a 0.0-1.0 scale.
+A deterministic, model-free refusal_check() is shared by both runners.
+
+Deviation D8 (Groq judge): the spec bans a "paid" LLM judge and otherwise
+wants generation metrics from BAAI/bge-small-en-v1.5 cosine similarity alone.
+Cosine can't distinguish a faithful paraphrase from an on-topic hallucination,
+and it *penalizes correct refusals*. Since Groq is already a required, free
+dependency, using it as a judge is strictly more defensible at zero extra cost.
+
+Gemini judge (Apple 10-K eval): same rationale -- Gemini free tier (10 RPM)
+gives a stronger, instruction-following judge at no cost.  The runner
+(run_apple_eval.py) enforces a 6-second inter-call sleep to stay within the
+10 RPM limit.
 """
 
 from __future__ import annotations
@@ -17,27 +25,17 @@ import json
 import os
 import re
 
+import google.generativeai as genai
 from dotenv import load_dotenv
 from groq import Groq
 
-from src.config import GROQ_FALLBACK_MODEL, JUDGE_MODEL, REFUSAL_PHRASE
+from src.config import GEMINI_JUDGE_MODEL, GROQ_FALLBACK_MODEL, JUDGE_MODEL, REFUSAL_PHRASE
 
 load_dotenv()
 
-_client: Groq | None = None
-
-
-def _get_client() -> Groq:
-    global _client
-    if _client is None:
-        api_key = os.environ.get("GROQ_API_KEY")
-        if not api_key:
-            raise RuntimeError(
-                "GROQ_API_KEY is not set. Copy .env.example to .env and fill in your key."
-            )
-        _client = Groq(api_key=api_key)
-    return _client
-
+# ---------------------------------------------------------------------------
+# Shared prompt templates (identical for both judges)
+# ---------------------------------------------------------------------------
 
 _JUDGE_SYSTEM_PROMPT = (
     "You are an impartial evaluator of a RAG (retrieval-augmented "
@@ -79,6 +77,10 @@ Respond with ONLY this JSON object (no other text):
 _JSON_BLOCK_RE = re.compile(r"\{.*\}", re.DOTALL)
 
 
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
 def _extract_json(text: str) -> dict | None:
     match = _JSON_BLOCK_RE.search(text)
     if not match:
@@ -97,13 +99,47 @@ def _clamp01(value) -> float:
     return max(0.0, min(1.0, v))
 
 
-def judge_answer(question: str, answer: str, context: list[str], ground_truth: str) -> dict | None:
+def _build_scores(parsed: dict, model: str) -> dict:
+    """Normalise a parsed judge JSON into a standard scores dict."""
+    return {
+        "faithfulness": _clamp01(parsed.get("faithfulness")),
+        "faithfulness_reason": parsed.get("faithfulness_reason", ""),
+        "correctness": _clamp01(parsed.get("correctness")),
+        "correctness_reason": parsed.get("correctness_reason", ""),
+        "relevance": _clamp01(parsed.get("relevance")),
+        "relevance_reason": parsed.get("relevance_reason", ""),
+        "judge_model": model,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Groq judge (original -- used by run_eval.py)
+# ---------------------------------------------------------------------------
+
+_groq_client: Groq | None = None
+
+
+def _get_groq_client() -> Groq:
+    global _groq_client
+    if _groq_client is None:
+        api_key = os.environ.get("GROQ_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "GROQ_API_KEY is not set. Copy .env.example to .env and fill in your key."
+            )
+        _groq_client = Groq(api_key=api_key)
+    return _groq_client
+
+
+def judge_answer(
+    question: str, answer: str, context: list[str], ground_truth: str
+) -> dict | None:
     """Run one Groq judge call scoring faithfulness / correctness /
     relevance for a single generated answer (temperature=0 for stable
     scores). Returns None if no parseable response was obtained after
     retries -- the caller should exclude the row from averages and note
     it in the report rather than crash the batch eval."""
-    client = _get_client()
+    client = _get_groq_client()
     context_text = "\n\n".join(context) if context else "(no context was retrieved)"
     user_content = _JUDGE_USER_TEMPLATE.format(
         question=question, context=context_text, answer=answer, ground_truth=ground_truth
@@ -133,19 +169,85 @@ def judge_answer(question: str, answer: str, context: list[str], ground_truth: s
 
             parsed = _extract_json(response.choices[0].message.content)
             if parsed is not None:
-                return {
-                    "faithfulness": _clamp01(parsed.get("faithfulness")),
-                    "faithfulness_reason": parsed.get("faithfulness_reason", ""),
-                    "correctness": _clamp01(parsed.get("correctness")),
-                    "correctness_reason": parsed.get("correctness_reason", ""),
-                    "relevance": _clamp01(parsed.get("relevance")),
-                    "relevance_reason": parsed.get("relevance_reason", ""),
-                    "judge_model": model,
-                }
+                return _build_scores(parsed, model)
             if is_last_attempt and is_last_model:
                 return None
     return None
 
+
+# ---------------------------------------------------------------------------
+# Gemini judge (used by run_apple_eval.py)
+# ---------------------------------------------------------------------------
+
+_gemini_configured = False
+
+
+def _ensure_gemini_configured() -> None:
+    global _gemini_configured
+    if not _gemini_configured:
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "GEMINI_API_KEY is not set. Copy .env.example to .env and fill in your key."
+            )
+        genai.configure(api_key=api_key)
+        _gemini_configured = True
+
+
+def gemini_judge_answer(
+    question: str, answer: str, context: list[str], ground_truth: str
+) -> dict | None:
+    """Run one Gemini judge call scoring faithfulness / correctness /
+    relevance for a single generated answer.
+
+    The caller (run_apple_eval.py) is responsible for rate-limit pacing --
+    sleep at least 6 seconds between calls to stay within the free-tier
+    10 RPM ceiling.
+
+    Returns None if no parseable response was obtained after retries.
+    """
+    _ensure_gemini_configured()
+    context_text = "\n\n".join(context) if context else "(no context was retrieved)"
+    prompt = (
+        _JUDGE_SYSTEM_PROMPT
+        + "\n\n"
+        + _JUDGE_USER_TEMPLATE.format(
+            question=question,
+            context=context_text,
+            answer=answer,
+            ground_truth=ground_truth,
+        )
+    )
+
+    model = genai.GenerativeModel(
+        model_name=GEMINI_JUDGE_MODEL,
+        generation_config=genai.types.GenerationConfig(temperature=0),
+    )
+
+    for attempt in range(3):  # up to 3 attempts on parse failure
+        try:
+            response = model.generate_content(prompt)
+            raw_text = response.text
+        except Exception as e:  # noqa: BLE001
+            print(f"    [gemini-judge] attempt {attempt + 1} error: {e}")
+            if attempt == 2:
+                return None
+            continue
+
+        parsed = _extract_json(raw_text)
+        if parsed is not None:
+            return _build_scores(parsed, GEMINI_JUDGE_MODEL)
+
+        print(f"    [gemini-judge] attempt {attempt + 1} could not parse JSON from response.")
+        if attempt == 2:
+            return None
+
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Refusal check (deterministic, shared by both runners)
+# ---------------------------------------------------------------------------
 
 def refusal_check(answer: str) -> bool:
     """Deterministic (no model) check for whether the answer refused to

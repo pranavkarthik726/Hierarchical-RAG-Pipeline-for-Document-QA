@@ -1,0 +1,250 @@
+[
+  {
+    "question": "What was Apple's total net sales for fiscal year 2025?",
+    "ground_truth_answer": "Apple's total net sales for fiscal year 2025 were $416,161 million, a 6% increase compared to $391,035 million in 2024.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p22"],
+    "relevant_pages": [22, 29],
+    "answerable": true
+  },
+  {
+    "question": "What was Apple's stock price at the end of fiscal year 2025?",
+    "ground_truth_answer": "The provided document does not state Apple's specific closing stock price; it only shows cumulative total return index values (e.g., $234 per $100 invested since 2020).",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "What was Apple's net income for fiscal year 2025?",
+    "ground_truth_answer": "Apple's net income for fiscal year 2025 was $112,010 million, up from $93,736 million in 2024.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p29"],
+    "relevant_pages": [29],
+    "answerable": true
+  },
+  {
+    "question": "How many iPhones did Apple sell in fiscal year 2025?",
+    "ground_truth_answer": "The provided document does not disclose unit sales figures for iPhone; it reports net sales in dollars only.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "Who is Apple's Chief Executive Officer?",
+    "ground_truth_answer": "Timothy D. Cook is Apple's Chief Executive Officer and a Director.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p58"],
+    "relevant_pages": [58],
+    "answerable": true
+  },
+  {
+    "question": "Who is Apple's Chief Financial Officer?",
+    "ground_truth_answer": "Kevan Parekh is Apple's Senior Vice President and Chief Financial Officer.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p58"],
+    "relevant_pages": [58],
+    "answerable": true
+  },
+  {
+    "question": "Who is Apple's Chief Technology Officer?",
+    "ground_truth_answer": "The provided document does not name a Chief Technology Officer for Apple.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  },
+  {
+    "question": "How much iPhone net sales did Apple report in fiscal year 2025?",
+    "ground_truth_answer": "iPhone net sales were $209,586 million in fiscal year 2025, a 4% increase over $201,183 million in 2024.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p23"],
+    "relevant_pages": [23],
+    "answerable": true
+  },
+  {
+    "question": "Which Apple product category had the highest year-over-year growth rate in fiscal year 2025?",
+    "ground_truth_answer": "Services net sales grew the most, increasing 14% year-over-year to $109,158 million.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p23"],
+    "relevant_pages": [23],
+    "answerable": true
+  },
+  {
+    "question": "How much did Apple's net sales decline in Greater China during fiscal year 2025?",
+    "ground_truth_answer": "Greater China net sales decreased 4% year-over-year to $64,377 million, primarily due to lower iPhone sales, partially offset by higher Mac sales.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p22"],
+    "relevant_pages": [22],
+    "answerable": true
+  },
+  {
+    "question": "What percentage of Apple's fiscal year 2025 net sales came through indirect distribution channels?",
+    "ground_truth_answer": "60% of total net sales came through indirect distribution channels, with the remaining 40% through direct channels.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p2"],
+    "relevant_pages": [2],
+    "answerable": true
+  },
+  {
+    "question": "How many full-time equivalent employees did Apple have as of September 27, 2025?",
+    "ground_truth_answer": "Apple had approximately 166,000 full-time equivalent employees as of September 27, 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p4"],
+    "relevant_pages": [4],
+    "answerable": true
+  },
+  {
+    "question": "Where is Apple's headquarters located?",
+    "ground_truth_answer": "Apple's headquarters is located at One Apple Park Way, Cupertino, California.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p1"],
+    "relevant_pages": [1, 17],
+    "answerable": true
+  },
+  {
+    "question": "What was Apple's total gross margin percentage in fiscal year 2025?",
+    "ground_truth_answer": "Apple's total gross margin percentage was 46.9% in fiscal year 2025, up from 46.2% in 2024.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p24"],
+    "relevant_pages": [24],
+    "answerable": true
+  },
+  {
+    "question": "How much did Apple spend on research and development in fiscal year 2025?",
+    "ground_truth_answer": "Apple spent $34,550 million on research and development in fiscal year 2025, an increase of 10% over 2024, driven primarily by headcount-related and infrastructure-related costs.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p24"],
+    "relevant_pages": [24],
+    "answerable": true
+  },
+  {
+    "question": "What was Apple's effective tax rate in fiscal year 2025?",
+    "ground_truth_answer": "Apple's effective tax rate was 15.6% in fiscal year 2025, compared to 24.1% in 2024 and a statutory federal rate of 21%.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p25"],
+    "relevant_pages": [25],
+    "answerable": true
+  },
+  {
+    "question": "How much cash, cash equivalents and marketable securities did Apple hold as of September 27, 2025?",
+    "ground_truth_answer": "Apple held $132.4 billion in cash, cash equivalents and marketable securities as of September 27, 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p25"],
+    "relevant_pages": [25],
+    "answerable": true
+  },
+  {
+    "question": "How much common stock did Apple repurchase during fiscal year 2025?",
+    "ground_truth_answer": "Apple repurchased $89.3 billion of its common stock, representing 402 million shares, during fiscal year 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p26"],
+    "relevant_pages": [26, 44],
+    "answerable": true
+  },
+  {
+    "question": "What was Apple's quarterly cash dividend per share as of September 27, 2025?",
+    "ground_truth_answer": "Apple's quarterly cash dividend was $0.26 per share as of September 27, 2025, raised from $0.25 per share in May 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p26"],
+    "relevant_pages": [26],
+    "answerable": true
+  },
+  {
+    "question": "How much did the European Commission fine Apple in the DMA Article 5(4) Investigation?",
+    "ground_truth_answer": "The European Commission fined Apple €500 million in the Article 5(4) Investigation and issued a cease and desist order requiring it to remove restrictions preventing developers from steering users to alternative distribution channels.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p18"],
+    "relevant_pages": [18],
+    "answerable": true
+  },
+  {
+    "question": "What antitrust allegations did the DOJ make against Apple in its March 2024 lawsuit?",
+    "ground_truth_answer": "The DOJ and several state attorneys general alleged that Apple engaged in monopolization or attempted monopolization in the markets for 'performance smartphones' and 'smartphones' in violation of U.S. antitrust laws.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p18"],
+    "relevant_pages": [18],
+    "answerable": true
+  },
+  {
+    "question": "What did the California District Court rule regarding Apple's compliance with the Epic Games injunction?",
+    "ground_truth_answer": "On April 30, 2025, the California District Court found Apple in violation of the 2021 Injunction and enjoined it from imposing any commission or fee on purchases made outside an app, and referred Apple to the U.S. Attorney for consideration of criminal contempt proceedings.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p18"],
+    "relevant_pages": [18],
+    "answerable": true
+  },
+  {
+    "question": "How many shareholders of record did Apple have as of October 17, 2025?",
+    "ground_truth_answer": "Apple had 22,429 shareholders of record as of October 17, 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p19"],
+    "relevant_pages": [19],
+    "answerable": true
+  },
+  {
+    "question": "What is Apple's fiscal year definition?",
+    "ground_truth_answer": "Apple's fiscal year is the 52- or 53-week period that ends on the last Saturday of September.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p1"],
+    "relevant_pages": [1, 21],
+    "answerable": true
+  },
+  {
+    "question": "What new iPhone models did Apple introduce in the fourth quarter of fiscal 2025?",
+    "ground_truth_answer": "Apple introduced the iPhone 17, iPhone Air, iPhone 17 Pro, and iPhone 17 Pro Max in the fourth quarter of fiscal 2025.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p21"],
+    "relevant_pages": [21],
+    "answerable": true
+  },
+  {
+    "question": "Who is Apple's independent registered public accounting firm?",
+    "ground_truth_answer": "Ernst & Young LLP is Apple's independent registered public accounting firm, having served as auditor since 2009.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p50"],
+    "relevant_pages": [50, 55],
+    "answerable": true
+  },
+  {
+    "question": "What critical audit matter did Ernst & Young identify in its audit of Apple's fiscal 2025 financial statements?",
+    "ground_truth_answer": "Ernst & Young identified Apple's uncertain tax positions as the critical audit matter, given the significant judgment involved in interpreting and applying GAAP and complex domestic and international tax laws.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p49"],
+    "relevant_pages": [49, 50],
+    "answerable": true
+  },
+  {
+    "question": "What was the total amount of Apple's gross unrecognized tax benefits as of September 27, 2025?",
+    "ground_truth_answer": "Apple's total gross unrecognized tax benefits were $23.2 billion as of September 27, 2025, of which $10.6 billion, if recognized, would impact the effective tax rate.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p42"],
+    "relevant_pages": [42],
+    "answerable": true
+  },
+  {
+    "question": "Who will succeed Chris Kondo as Apple's Principal Accounting Officer?",
+    "ground_truth_answer": "Ben Borders, Apple's Director of Technical Accounting, will become Senior Director of Corporate Accounting and Principal Accounting Officer, reporting to CFO Kevan Parekh.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_p53"],
+    "relevant_pages": [53],
+    "answerable": true
+  },
+  {
+    "question": "What is the maturity date and interest rate of Apple's 2042 Notes?",
+    "ground_truth_answer": "Apple's 2042 Notes mature on July 31, 2042 and bear interest at a rate of 3.600% per annum, paid semi-annually.",
+    "doc_name": "Apple.pdf",
+    "relevant_parent_ids": ["apple10k_ex4.1_p4"],
+    "relevant_pages": [4],
+    "answerable": true
+  },
+  {
+    "question": "What was Apple's revenue from advertising services in fiscal year 2025?",
+    "ground_truth_answer": "The provided document does not break out a specific revenue figure for Apple's advertising services in fiscal year 2025.",
+    "doc_name": null,
+    "relevant_parent_ids": [],
+    "relevant_pages": [],
+    "answerable": false
+  }
+]

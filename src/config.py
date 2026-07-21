@@ -39,6 +39,11 @@ JUDGE_MODEL = "llama-3.3-70b-versatile"
 # as the judge's own fallback.
 GROQ_FALLBACK_MODEL = "llama-3.1-8b-instant"
 
+# Gemini judge: used for Apple 10-K eval (run_apple_eval.py).
+# Free tier limits: 5 RPM (sleep 12s between calls) / 20 RPD.
+# 31 questions requires 2 runs across 2 days; checkpoint handles resume.
+GEMINI_JUDGE_MODEL = "gemini-2.5-flash"
+
 # D4: bge embeddings are trained for cosine similarity; Chroma's default
 # space is L2, which silently degrades ranking quality for this model.
 CHROMA_DISTANCE = "cosine"
